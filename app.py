@@ -12,8 +12,14 @@ db.init_app(app)
 @app.route("/")
 def index():
     user_list = User.query.all()
-    oneItem = User.query.filter_by(username="22").first()
-    return render_template('user.html', myUser=user_list, oneItem=oneItem)
+    one_item = User.query.filter_by(username="22").first()
+    return render_template('user.html', myUser=user_list, oneItem=one_item)
+
+
+@app.route("/profile/<username>")
+def profile(username):
+    one_item = User.query.filter_by(username=username).first()
+    return render_template('profile.html', user=one_item)
 
 
 @app.route('/post_user', methods=['POST'])
