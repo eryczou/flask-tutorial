@@ -5,12 +5,21 @@ from src.db_connection import db, User
 from flask_sqlalchemy import SQLAlchemy
 from flask.ext.security import Security, SQLAlchemyUserDatastore, \
     UserMixin, RoleMixin, login_required
+from flask_mail import Mail
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://zz232323:zz232323@localhost/flaskmovie'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'super-secret'
 app.config['SECURITY_REGISTERABLE'] = True
+# After 'Create app'
+app.config.update(
+    MAIL_SERVER = 'smtp.gmail.com',
+    MAIL_PORT = 465,
+    MAIL_USE_SSL = True,
+    MAIL_USERNAME = 'zz232323@gmail.com',
+    MAIL_PASSWORD = 'zz!!232323')
+mail = Mail(app)
 
 # Create database connection object
 db = SQLAlchemy(app)
