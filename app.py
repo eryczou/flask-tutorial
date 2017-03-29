@@ -8,6 +8,7 @@ from flask.ext.security import Security, SQLAlchemyUserDatastore, \
 from flask_mail import Mail
 
 app = Flask(__name__)
+app.debug = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://zz232323:zz232323@localhost/flaskmovie'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'super-secret'
